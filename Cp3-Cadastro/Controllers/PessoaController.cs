@@ -46,7 +46,7 @@ namespace Cp3_Cadastro.Controllers
         public IActionResult Criar(PessoaModel pessoa)
         {
             _pessoarepository.Adicionar(pessoa);
-            return RedirectToAction("Index");
+            return RedirectToAction("Criar", "Endereco", new {id_pessoa = pessoa.id_pessoa});
         }
 
         [HttpPost]
