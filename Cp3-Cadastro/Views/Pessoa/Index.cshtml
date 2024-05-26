@@ -1,0 +1,48 @@
+﻿@model List<PessoaModel>
+@{
+    ViewData["Title"] = "Lista de Pessoas";
+}
+
+<div class="text-center">
+    <h1 class="">Lista de pessoas</h1>
+    <br />
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Pessoa" asp-action="Criar">Adicionar nova pessoa</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">CPF</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (PessoaModel pessoa in Model)
+                {
+                    <tr>
+                        <th scope="row">@pessoa.id_pessoa</th>
+                        <td>@pessoa.nome_pessoa</td>
+                        <td>@pessoa.cpf_pessoa</td>
+                        <td>@pessoa.email_pessoa</td>
+                        <td>
+                            <div class="btn-group">
+                                <a role="button" class="btn btn-primary active m-1 rounded" asp-controller="Endereco" asp-action="Criar" asp-route-id_pessoa="@pessoa.id_pessoa">Cadastrar Endereço</a>
+                            </div>
+                            <div class="btn-group">
+                                <a role="button" class="btn btn-primary active m-1 rounded" asp-controller="Pessoa" asp-route-id_pessoa="@pessoa.id_pessoa" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger m-1 rounded" asp-controller="Pessoa" asp-route-id_pessoa="@pessoa.id_pessoa" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div class="btn-group">
+        <a role="button" class="btn btn-primary active mx-1 rounded" asp-controller="Endereco" asp-action="Index">Visualizar endereços cadastrados</a>
+    </div>
+</div>

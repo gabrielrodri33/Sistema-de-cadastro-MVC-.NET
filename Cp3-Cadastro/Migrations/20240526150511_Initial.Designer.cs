@@ -11,7 +11,7 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Cp3_Cadastro.Migrations
 {
     [DbContext(typeof(OracleDbContext))]
-    [Migration("20240525145824_Initial")]
+    [Migration("20240526150511_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -54,7 +54,7 @@ namespace Cp3_Cadastro.Migrations
                     b.Property<int>("id_pessoa")
                         .HasColumnType("NUMBER(10)");
 
-                    b.Property<int>("pessoaid_pessoa")
+                    b.Property<int>("numero_endereco")
                         .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("rua_endereco")
@@ -63,7 +63,7 @@ namespace Cp3_Cadastro.Migrations
 
                     b.HasKey("id_endereco");
 
-                    b.HasIndex("pessoaid_pessoa");
+                    b.HasIndex("id_pessoa");
 
                     b.ToTable("Endereco");
                 });
@@ -100,8 +100,8 @@ namespace Cp3_Cadastro.Migrations
             modelBuilder.Entity("Cp3_Cadastro.Models.EnderecoModel", b =>
                 {
                     b.HasOne("Cp3_Cadastro.Models.PessoaModel", "pessoa")
-                        .WithMany("endereco")
-                        .HasForeignKey("pessoaid_pessoa")
+                        .WithMany("enderecos")
+                        .HasForeignKey("id_pessoa")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -110,7 +110,7 @@ namespace Cp3_Cadastro.Migrations
 
             modelBuilder.Entity("Cp3_Cadastro.Models.PessoaModel", b =>
                 {
-                    b.Navigation("endereco");
+                    b.Navigation("enderecos");
                 });
 #pragma warning restore 612, 618
         }

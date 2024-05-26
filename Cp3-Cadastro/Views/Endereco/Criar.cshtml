@@ -1,0 +1,46 @@
+﻿@model EnderecoModel
+@{
+    ViewData["Title"] = "Cadastrar Endereco";
+}
+
+<div class="text-center">
+    <h1 class="">Cadastrar Endereco</h1>
+    <br />
+</div>
+<form asp-controller="Endereco" asp-action="Criar" method="post">
+
+    <div class="form-group">
+        <label for="cep_endereco">CEP <span class="text-danger">*</span></label>
+        <input type="text" asp-for="cep_endereco" class="form-control" placeholder="XXXXX-XXX.">
+    </div>
+
+    <div class="form-group">
+        <label for="rua_endereco">Rua <span class="text-danger">*</span></label>
+        <input type="text" asp-for="rua_endereco" class="form-control" placeholder="Digite a rua.">
+    </div>
+
+    <div class="form-group">
+        <label for="bairro_endereco">Bairro <span class="text-danger">*</span></label>
+        <input type="text" asp-for="bairro_endereco" class="form-control" placeholder="Digite o bairro.">
+    </div>
+
+    <div class="form-group">
+        <label for="cidade_endereco">Cidade <span class="text-danger">*</span></label>
+        <input type="text" asp-for="cidade_endereco" class="form-control" placeholder="Digite o cidade.">
+    </div>
+
+    <div class="form-group">
+        <label for="estado_endereco">Estado <span class="text-danger">*</span></label>
+        <input type="text" asp-for="estado_endereco" class="form-control" placeholder="Digite o cidade.">
+    </div>
+
+    <div class="form-group">
+        <label for="complemento_endereco">Complemento</label>
+        <input type="text" asp-for="complemento_endereco" class="form-control" placeholder="Digite o complemento.">
+    </div>
+
+    <input type="hidden" asp-for="id_pessoa" />
+    <br />
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a class="btn btn-secondary" asp-controller="Endereco" asp-action="Index" role="button">Voltar</a>
+</form>

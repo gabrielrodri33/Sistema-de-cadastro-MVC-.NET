@@ -33,7 +33,7 @@ namespace Cp3_Cadastro.Repository
         {
             EnderecoModel enderecoDb = ListarPorId(endereco.id_endereco);
 
-            if (enderecoDb != null) throw new System.Exception("Erro ao atualizar o Endereço!");
+            if (enderecoDb == null) throw new Exception("Erro ao atualizar o Endereço!");
 
             enderecoDb.rua_endereco = endereco.rua_endereco;
             enderecoDb.complemento_endereco = endereco.complemento_endereco;
@@ -41,6 +41,7 @@ namespace Cp3_Cadastro.Repository
             enderecoDb.cidade_endereco = endereco.cidade_endereco;
             enderecoDb.estado_endereco = endereco.estado_endereco;
             enderecoDb.cep_endereco = endereco.cep_endereco;
+            
 
             _bancoContext.Endereco.Update(enderecoDb);
             _bancoContext.SaveChanges();
@@ -50,7 +51,7 @@ namespace Cp3_Cadastro.Repository
         {
             EnderecoModel enderecoDb = ListarPorId(id_endereco);
 
-            if (enderecoDb != null) throw new System.Exception("Erro ao apagar o Endereço!");
+            if (enderecoDb == null) throw new System.Exception("Erro ao apagar o Endereço!");
 
             _bancoContext.Endereco.Remove(enderecoDb);
             _bancoContext.SaveChanges();
