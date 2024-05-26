@@ -22,6 +22,6 @@ namespace Cp3_Cadastro.Models
         public string? cpf_pessoa {  get; set; }
 
         [InverseProperty("Pessoa")]
-        public required ICollection<EnderecoModel> endereco { get; set; }
+        public ICollection<EnderecoModel> enderecos { get; set; } = new List<EnderecoModel>();
     }
 }
