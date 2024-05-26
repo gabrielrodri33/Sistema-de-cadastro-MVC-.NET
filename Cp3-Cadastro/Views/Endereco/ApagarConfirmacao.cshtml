@@ -1,0 +1,14 @@
+﻿@model EnderecoModel
+@{
+    ViewData["Title"] = "Confirmação de exclusão";
+}
+
+<div class="text-center">
+    <h3>Realmente deseja apagar o endereco (@Model.rua_endereco)?</h3>
+</div>
+
+<form asp-controller="Endereco" asp-action="Apagar" method="post">
+    <input type="hidden" asp-for="id_endereco" />
+    <button type="submit" class="btn btn-danger btn-block">Confirmar exclusão</button>
+    <a class="btn btn-primary btn-block" role="button" asp-controller="Endereco" asp-action="Index">Cancelar exclusão</a>
+</form>
