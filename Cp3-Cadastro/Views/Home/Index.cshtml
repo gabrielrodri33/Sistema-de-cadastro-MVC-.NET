@@ -1,8 +1,30 @@
-﻿@{
+﻿@model Cp3_Cadastro.ViewModel.HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Sistema de Cadastro (Pessoa e Endereço)</h1>
+    <p class="lead">Bem-vindo ao nosso sistema de cadastro. Aqui você pode gerenciar informações de pessoas e seus respectivos endereços.</p>
+</div>
+
+<div class="justify-content-center align-items-center vh-100">
+    <div class="row text-center w-100">
+        <div class="col-md-6 mb-4">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total de Pessoas Cadastradas</h5>
+                    <p class="card-text display-4">@Model.TotalPessoas</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total de Endereços Cadastrados</h5>
+                    <p class="card-text display-4">@Model.TotalEnderecos</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
