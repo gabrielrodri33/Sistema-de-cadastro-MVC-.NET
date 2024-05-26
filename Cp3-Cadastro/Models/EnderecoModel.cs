@@ -13,6 +13,9 @@ namespace Cp3_Cadastro.Models
         [Required]
         public string? rua_endereco { get; set; }
 
+        [Required]
+        public int numero_endereco { get; set; }
+
         public string? complemento_endereco { get; set; }
 
         [Required]
