@@ -1,0 +1,16 @@
+﻿@model PessoaModel
+@{
+    ViewData["Title"] = "Confirmação de exclusão";
+}
+
+<div class="text-center">
+    <h3>Realmente deseja apagar o usuário (@Model.nome_pessoa)?</h3>
+</div>
+
+<form class="text-center mt-4" asp-controller="Pessoa" asp-action="Apagar" method="post">
+    <input type="hidden" asp-for="id_pessoa" />
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+        <a class="btn btn-primary" role="button" asp-controller="Pessoa" asp-action="Index">Cancelar exclusão</a>
+    </div>
+</form>

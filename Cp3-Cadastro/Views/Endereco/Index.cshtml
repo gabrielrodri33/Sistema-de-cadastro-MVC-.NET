@@ -1,0 +1,52 @@
+﻿@model List<EnderecoModel>
+@{
+    ViewData["Title"] = "Lista de Endereço";
+}
+
+<div class="card bg-dark text-white text-center m-2 p-2">
+    <h1 class="">Lista de enderecos</h1>
+    <br />
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Rua</th>
+                <th scope="col">Número</th>
+                <th scope="col">Complemento</th>
+                <th scope="col">Bairro</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Cep</th>
+                <th scope="col">id_pessoa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (EnderecoModel endereco in Model)
+                {
+                    <tr>
+                        <th scope="row">@endereco.id_endereco</th>
+                        <td>@endereco.rua_endereco</td>
+                        <td>@endereco.numero_endereco</td>
+                        <td>@endereco.complemento_endereco</td>
+                        <td>@endereco.bairro_endereco</td>
+                        <td>@endereco.cidade_endereco</td>
+                        <td>@endereco.estado_endereco</td>
+                        <td>@endereco.cep_endereco</td>
+                        <td>@endereco.id_pessoa</td>
+                        <td>
+                            <div class="btn-group">
+                                <a role="button" class="btn btn-primary active m-1 rounded" asp-controller="Endereco" asp-route-id_endereco="@endereco.id_endereco" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger m-1 rounded" asp-controller="Endereco" asp-route-id_endereco="@endereco.id_endereco" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div class="btn-group">
+        <a role="button" class="btn btn-primary active mx-1 rounded" asp-controller="Pessoa" asp-action="Index">Visualizar pessoas cadastradas</a>
+    </div>
+</div>
