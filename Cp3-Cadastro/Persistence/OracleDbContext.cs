@@ -13,5 +13,15 @@ namespace Cp3_Cadastro.Persistence
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PessoaModel>()
+                .HasMany(p => p.enderecos)
+                .WithOne(e => e.pessoa)
+                .HasForeignKey(e => e.id_pessoa)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
