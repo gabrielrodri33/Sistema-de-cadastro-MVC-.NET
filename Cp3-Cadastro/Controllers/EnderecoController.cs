@@ -16,7 +16,7 @@ namespace Cp3_Cadastro.Controllers
         public IActionResult Index()
         {
             List<EnderecoModel> enderecos = _enderecoRepository.BuscarTodos();
-            return View();
+            return View(enderecos);
         }
 
         public IActionResult Criar()
@@ -40,6 +40,13 @@ namespace Cp3_Cadastro.Controllers
         {
             _enderecoRepository.Apagar(id_endereco);
             return RedirectToAction("Index", "Pessoa");
+        }
+
+        [HttpGet]
+        public IActionResult Criar(int id_pessoa)
+        {
+            ViewBag.id_pessoa = id_pessoa;
+            return View();
         }
 
         [HttpPost]
